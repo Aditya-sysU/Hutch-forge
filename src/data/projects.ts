@@ -1,0 +1,38 @@
+import { Project } from '../types';
+
+export const PROJECTS: Project[] = [
+  {
+    id: 'vyvhr',
+    title: 'VYVHR',
+    client: 'VYVHR',
+    year: '2025',
+    category: 'High-End Apparel & Luxury Streetwear',
+    services: ['Web Design', 'Lookbook & UI/UX', 'Ecommerce Architecture'],
+    description: 'Premium everyday streetwear done right',
+    liveUrl: 'https://vyvhr.com',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1600&q=80',
+    imageAlt: 'VYVHR official clothing brand digital store at vyvhr.com',
+    palette: ['#0A0A0A', '#1368E6', '#F4F4F4', '#3B82F6'],
+    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Shopify Storefront API'],
+    overview: 'Official online flagship for luxury apparel label vyvhr.com.',
+    deliverables: ['Creative Direction', 'Clothing Brand Storefront', 'Lookbook UI/UX'],
+  },
+  {
+    id: 'driftwood',
+    title: 'Driftwood Pizza & Subs',
+    client: 'Driftwood Pizza & Subs',
+    year: '2025',
+    category: 'Digital Storefront & Ordering',
+    services: ['Web Design', 'UI/UX Design', 'Website Development'],
+    description: 'Artisanal pizza, subs, and online food ordering storefront.',
+    liveUrl: 'https://driftwoodpizzaandsubs.com/',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=80',
+    imageAlt: 'Driftwood Pizza & Subs official website at driftwoodpizzaandsubs.com',
+    palette: ['#0C0A09', '#EA580C', '#FEF2F2', '#1368E6'],
+    techStack: ['React', 'TypeScript', 'Tailwind CSS'],
+    overview: 'Official digital storefront for driftwoodpizzaandsubs.com.',
+    deliverables: ['Web Design', 'Digital Storefront', 'Online Ordering'],
+  },
+];
