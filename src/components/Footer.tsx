@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageRoute } from '../types';
-import { Clock, Globe, ArrowUpRight } from 'lucide-react';
+import { Clock, Globe, ArrowUpRight, Mail, Phone } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 
 interface FooterProps {
@@ -56,8 +56,8 @@ export function Footer({ onNavigate, className = '' }: FooterProps) {
       <div className="relative z-10 max-w-7xl mx-auto w-full mb-16 sm:mb-20 mt-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
           
-          {/* Column 1: Brand & Bio (lg:col-span-5) */}
-          <div className="lg:col-span-5 space-y-6">
+          {/* Column 1: Brand & Bio (lg:col-span-4) */}
+          <div className="lg:col-span-4 space-y-6">
             <BrandLogo onClick={() => handleNav('home')} size="large" theme="light" />
             
             <p className="text-sm sm:text-[15px] text-neutral-700 leading-relaxed font-normal max-w-md">
@@ -68,7 +68,7 @@ export function Footer({ onNavigate, className = '' }: FooterProps) {
           {/* Column 2: Directory (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
             <div className="text-[12px] font-mono tracking-widest text-neutral-500 uppercase font-semibold">
-              // DIRECTORY
+              DIRECTORY
             </div>
             <ul className="space-y-2.5 text-sm font-medium">
               <li>
@@ -115,27 +115,58 @@ export function Footer({ onNavigate, className = '' }: FooterProps) {
             </ul>
           </div>
 
-          {/* Column 3: Timezone & Studio Location (lg:col-span-2) */}
+          {/* Column 3: Contact (lg:col-span-3) */}
+          <div className="lg:col-span-3 space-y-4">
+            <div className="text-[12px] font-mono tracking-widest text-neutral-500 uppercase font-semibold">
+              CONTACT
+            </div>
+            <ul className="space-y-3 text-sm font-medium">
+              <li>
+                <a
+                  href="mailto:hello@hutchforge.com"
+                  className="inline-flex items-center gap-2.5 text-neutral-800 hover:text-[#1368e6] group transition-colors"
+                >
+                  <span className="w-8 h-8 rounded-full bg-black/5 border border-black/10 flex items-center justify-center text-[#1368e6] group-hover:bg-[#1368e6] group-hover:text-white transition-all shadow-sm shrink-0">
+                    <Mail className="w-3.5 h-3.5" />
+                  </span>
+                  <span className="font-medium text-xs sm:text-[13px] break-all sm:break-normal">hello@hutchforge.com</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+918700061944"
+                  className="inline-flex items-center gap-2.5 text-neutral-800 hover:text-[#1368e6] group transition-colors"
+                >
+                  <span className="w-8 h-8 rounded-full bg-black/5 border border-black/10 flex items-center justify-center text-[#1368e6] group-hover:bg-[#1368e6] group-hover:text-white transition-all shadow-sm shrink-0">
+                    <Phone className="w-3.5 h-3.5" />
+                  </span>
+                  <span className="font-mono font-semibold text-xs sm:text-[13px] tracking-wide">+91 8700061944</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Timezone & Studio Location (lg:col-span-2) */}
           <div className="lg:col-span-2 space-y-4">
             <div className="text-[12px] font-mono tracking-widest text-neutral-500 uppercase font-semibold">
-              // TIMEZONE
+              TIMEZONE
             </div>
             <div className="space-y-3">
-              <div className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-black/5 border border-black/10 text-xs sm:text-[13px] font-mono text-[#111111] shadow-sm backdrop-blur-sm">
-                <Clock className="w-4 h-4 text-[#1368e6]" />
+              <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-black/5 border border-black/10 text-xs font-mono text-[#111111] shadow-sm backdrop-blur-sm">
+                <Clock className="w-3.5 h-3.5 text-[#1368e6] shrink-0" />
                 <span className="font-semibold">{istTime || '07:41:49 AM IST'}</span>
               </div>
-              <div className="flex items-center gap-2 text-neutral-600 text-xs font-mono">
-                <Globe className="w-3.5 h-3.5 text-neutral-500" />
+              <div className="flex items-center gap-1.5 text-neutral-600 text-xs font-mono">
+                <Globe className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
                 <span>Asia/Kolkata (UTC+5:30)</span>
               </div>
             </div>
           </div>
 
-          {/* Column 4: Social Action (lg:col-span-2) - Behance Only, no LinkedIn or GitHub */}
-          <div className="lg:col-span-2 space-y-4">
+          {/* Column 5: Social Action (lg:col-span-1) */}
+          <div className="lg:col-span-1 space-y-4">
             <div className="text-[12px] font-mono tracking-widest text-neutral-500 uppercase font-semibold">
-              // SOCIALS
+              SOCIALS
             </div>
             <div className="flex items-center gap-3">
               <a
@@ -143,9 +174,9 @@ export function Footer({ onNavigate, className = '' }: FooterProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Behance Profile"
-                className="w-11 h-11 rounded-full bg-[#1368e6] hover:bg-[#0f54b9] text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-[0_4px_16px_rgba(19,104,230,0.3)] cursor-pointer"
+                className="w-10 h-10 rounded-full bg-[#1368e6] hover:bg-[#0f54b9] text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-[0_4px_16px_rgba(19,104,230,0.3)] cursor-pointer"
               >
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
                   <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.062 0-5.625-2.859-5.625-5.625 0-3.328 1.953-5.625 5.547-5.625 3.734 0 5.188 2.5 5.188 5.172 0 .641-.047 1.078-.078 1.484h-7.875c.094 1.703 1.25 2.547 2.875 2.547 1.453 0 2.219-.719 2.578-1.578h2.492zm-2.812-4.125c-.094-1.219-.781-2.281-2.344-2.281-1.469 0-2.281 1.016-2.438 2.281h4.782zm-12.914 7.125h-8v-16h7.797c3.563 0 5.453 1.625 5.453 4.672 0 1.844-.922 3.172-2.312 3.844 1.844.625 2.875 2.141 2.875 4.266 0 3.516-2.203 3.218-5.813 3.218zm-4.781-9.438h4.484c1.5 0 2.547-.641 2.547-1.922 0-1.25-.953-1.844-2.484-1.844h-4.547v3.766zm0 6.641h4.641c1.719 0 2.859-.75 2.859-2.188 0-1.5-.969-2.219-2.734-2.219h-4.766v4.407z" />
                 </svg>
               </a>
