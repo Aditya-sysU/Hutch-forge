@@ -20,7 +20,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
             <Layers className="w-3.5 h-3.5 text-[#1368e6]" />
             <span>DISCIPLINES & TECHNICAL CAPABILITIES</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-extrabold uppercase tracking-tight text-white font-sans">
+          <h1 className="text-[26px] font-extrabold tracking-tight text-white font-sans">
             Capabilities & Services
           </h1>
           <p className="text-sm sm:text-base text-white/60 max-w-2xl leading-relaxed font-light">
@@ -114,7 +114,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
             <span className="text-xs font-mono text-[#93c5fd] uppercase tracking-wider">
               INTEGRATED SPRINT WORKFLOW
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-white">
+            <h2 className="text-[26px] font-extrabold tracking-tight text-white">
               The 3-Phase Delivery Method
             </h2>
             <p className="text-xs sm:text-sm text-white/60 font-light">
@@ -126,16 +126,25 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
             {PROCESS_PHASES.map((phase) => (
               <div
                 key={phase.number}
-                className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4"
+                className="rounded-[28px] p-7 sm:p-8 flex flex-col justify-between space-y-5 bg-[#ECECEC] text-[#111111] border border-neutral-300/70 hover:border-neutral-400 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-xl font-bold text-[#1368e6]">{phase.number}</span>
-                  <span className="text-white/40">{phase.timeline}</span>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-end">
+                    <span className="text-xl font-black text-neutral-400 font-mono">
+                      {phase.number}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-extrabold text-[#111111] tracking-tight">{phase.title}</h3>
+                  <p className="text-xs text-neutral-600 leading-relaxed font-normal">
+                    {phase.description}
+                  </p>
                 </div>
-                <h3 className="text-lg font-bold text-white">{phase.title}</h3>
-                <p className="text-xs text-white/60 leading-relaxed font-light">
-                  {phase.description}
-                </p>
+
+                <div className="pt-2 flex justify-end">
+                  <div className="w-9 h-9 rounded-full bg-black/5 group-hover:bg-neutral-900 group-hover:text-white text-neutral-800 flex items-center justify-center transition-colors">
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -176,7 +185,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
         {/* Bottom CTA */}
         <div className="p-8 sm:p-12 rounded-3xl bg-[#080808] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center sm:text-left">
-            <h3 className="text-xl sm:text-2xl font-bold uppercase tracking-tight text-white">
+            <h3 className="text-[26px] font-extrabold tracking-tight text-white">
               Need a tailored capability set?
             </h3>
             <p className="text-xs font-mono text-white/50">

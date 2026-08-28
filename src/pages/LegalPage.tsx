@@ -19,7 +19,7 @@ export function LegalPage({ type, onNavigate }: LegalPageProps) {
             <span className="w-1.5 h-1.5 rounded-full bg-[#002B5B]" />
             <span>// GOVERNANCE & LEGAL COMPLIANCE</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-extrabold uppercase tracking-tight text-[#F5F5F5] font-sans">
+          <h1 className="text-[26px] font-extrabold tracking-tight text-[#F5F5F5] font-sans">
             {activeTab === 'privacy' ? 'Privacy Policy' : 'Terms of Engagement'}
           </h1>
           <p className="text-xs font-mono text-white/40 mt-4">

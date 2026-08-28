@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PageRoute } from '../types';
-import { ArrowUpRight, Clock, Globe, Sparkles, Mail } from 'lucide-react';
+import { Clock, Globe, ArrowUpRight } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 
 interface FooterProps {
   onNavigate: (route: PageRoute) => void;
@@ -10,7 +11,7 @@ interface FooterProps {
 export function Footer({ onNavigate, className = '' }: FooterProps) {
   const [istTime, setIstTime] = useState('');
 
-  // Real-time Indian Standard Time (IST, UTC+5:30)
+  // Real-time Indian Standard Time (IST, Asia/Kolkata, UTC+5:30)
   useEffect(() => {
     const updateTime = () => {
       try {
@@ -23,8 +24,8 @@ export function Footer({ onNavigate, className = '' }: FooterProps) {
           hour12: true,
         }).format(now);
         setIstTime(formatted.toUpperCase() + ' IST');
-      } catch (e) {
-        setIstTime('03:00:00 PM IST');
+      } catch {
+        setIstTime('07:41:49 AM IST');
       }
     };
     updateTime();
@@ -39,90 +40,41 @@ export function Footer({ onNavigate, className = '' }: FooterProps) {
 
   return (
     <footer
-      className={`w-full bg-[#000000] text-white/70 border-t border-white/15 py-20 px-6 sm:px-10 lg:px-16 relative overflow-hidden flex flex-col justify-center ${className}`}
+      className={`w-full bg-[#ECECEC] text-[#111111] border-t border-neutral-300 relative overflow-hidden flex flex-col justify-between pt-24 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 px-6 sm:px-12 lg:px-20 select-none min-h-[580px] lg:min-h-[640px] ${className}`}
     >
-      {/* Background Deep Blue Volumetric Glow Identical to Hero */}
-      <div className="absolute inset-0 bg-radial-[circle_at_center] from-[#1368e6]/20 via-[#0a3080]/10 to-black pointer-events-none" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#1368e6]/15 blur-[160px] pointer-events-none" />
+      {/* 1. Subtle Architectural Grid & Ambient Gradient Overlays (Matching 'Research to Launch' Palette) */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+        {/* Soft atmospheric warm gray & ambient glow */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] sm:w-[1100px] h-[350px] bg-radial-[circle_at_center] from-black/[0.04] via-black/[0.015] to-transparent blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[450px] h-[300px] bg-radial-[circle_at_bottom_right] from-[#1368e6]/[0.05] via-transparent to-transparent blur-2xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto w-full space-y-16 relative z-10 my-auto">
-        {/* Top Section: Interactive Project Callout Banner */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#080808]/90 backdrop-blur-md hover:bg-[#0c0c0c] border border-white/15 hover:border-[#1368e6]/40 transition-all duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 shadow-[0_20px_50px_rgba(0,0,0,0.9)] group">
-          <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1368e6]/15 border border-[#1368e6]/30 text-[11px] font-mono text-[#93c5fd]">
-              <Sparkles className="w-3 h-3 text-[#1368e6]" />
-              <span>LET'S BUILD SOMETHING EXTRAORDINARY</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white font-sans">
-              Have a project in mind?
-            </h2>
-            <p className="text-sm text-white/60 leading-relaxed font-light">
-              We partner with founders and product teams worldwide. Start a conversation or submit a brief to get started.
-            </p>
-          </div>
+        {/* Subtle grid pattern overlay for editorial craft */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none opacity-60" />
+      </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto shrink-0">
-            <button
-              onClick={() => handleNav('contact')}
-              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-white/90 text-black text-xs font-bold tracking-wide transition-all duration-300 shadow-xl cursor-pointer hover:scale-105 active:scale-95"
-            >
-              <span>Start a Project Brief</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </button>
-            <a
-              href="mailto:direct@hutchforge.studio"
-              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-black/60 hover:bg-white/10 border border-white/15 hover:border-white/30 text-white text-xs font-medium transition-all duration-300 cursor-pointer"
-            >
-              <Mail className="w-4 h-4 text-white/60" />
-              <span>direct@hutchforge.studio</span>
-            </a>
-          </div>
-        </div>
-
-        {/* Middle Section: Studio Directory Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start pt-6">
-          {/* Exact Brand Logo & Wordmark */}
-          <div className="md:col-span-5 space-y-4">
-            <button
-              onClick={() => handleNav('home')}
-              className="flex items-center gap-2.5 group cursor-pointer focus:outline-none transition-transform hover:scale-105 text-left"
-              aria-label="Hutchforge Home"
-            >
-              {/* Fluid stylized double-arc logo icon */}
-              <div className="w-8 h-8 rounded-full bg-[#0d0d0d] border border-white/15 flex items-center justify-center group-hover:border-[#1368e6] group-hover:bg-[#1368e6]/10 transition-all shadow-md">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="w-4 h-4 text-white group-hover:text-[#60a5fa] transition-colors"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M4 14c2-4 5-6 8-6s6 2 8 6" />
-                  <path d="M4 18c2-4 5-6 8-6s6 2 8 6" />
-                </svg>
-              </div>
-              <span className="font-black text-[17px] tracking-[-0.04em] text-white lowercase font-sans">
-                hutchforge
-              </span>
-            </button>
-
-            <p className="text-xs sm:text-sm text-white/60 max-w-sm leading-relaxed font-light">
+      {/* 2. Structured Multi-Column Studio Navigation (Light Theme, Black Text, Behance Social Button) */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full mb-16 sm:mb-20 mt-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
+          
+          {/* Column 1: Brand & Bio (lg:col-span-5) */}
+          <div className="lg:col-span-5 space-y-6">
+            <BrandLogo onClick={() => handleNav('home')} size="large" theme="light" />
+            
+            <p className="text-sm sm:text-[15px] text-neutral-700 leading-relaxed font-normal max-w-md">
               A specialized creative digital studio crafting category-defining websites, UI/UX systems, and interactive digital platforms with engineering precision.
             </p>
           </div>
 
-          {/* Directory Links */}
-          <div className="md:col-span-3 space-y-3">
-            <div className="text-[11px] font-mono tracking-widest text-white/40 uppercase">
+          {/* Column 2: Directory (lg:col-span-3) */}
+          <div className="lg:col-span-3 space-y-4">
+            <div className="text-[12px] font-mono tracking-widest text-neutral-500 uppercase font-semibold">
               // DIRECTORY
             </div>
-            <ul className="space-y-2.5 text-xs">
+            <ul className="space-y-2.5 text-sm font-medium">
               <li>
                 <button
                   onClick={() => handleNav('work')}
-                  className="hover:text-white hover:translate-x-1 transition-all cursor-pointer text-white/70 inline-block"
+                  className="text-neutral-800 hover:text-black hover:translate-x-1 transition-all cursor-pointer block"
                 >
                   Selected Work
                 </button>
@@ -130,7 +82,7 @@ export function Footer({ onNavigate, className = '' }: FooterProps) {
               <li>
                 <button
                   onClick={() => handleNav('services')}
-                  className="hover:text-white hover:translate-x-1 transition-all cursor-pointer text-white/70 inline-block"
+                  className="text-neutral-800 hover:text-black hover:translate-x-1 transition-all cursor-pointer block"
                 >
                   Capabilities & Services
                 </button>
@@ -138,7 +90,7 @@ export function Footer({ onNavigate, className = '' }: FooterProps) {
               <li>
                 <button
                   onClick={() => handleNav('about')}
-                  className="hover:text-white hover:translate-x-1 transition-all cursor-pointer text-white/70 inline-block"
+                  className="text-neutral-800 hover:text-black hover:translate-x-1 transition-all cursor-pointer block"
                 >
                   About the Studio
                 </button>
@@ -146,7 +98,7 @@ export function Footer({ onNavigate, className = '' }: FooterProps) {
               <li>
                 <button
                   onClick={() => handleNav('faq')}
-                  className="hover:text-white hover:translate-x-1 transition-all cursor-pointer text-white/70 inline-block"
+                  className="text-neutral-800 hover:text-black hover:translate-x-1 transition-all cursor-pointer block"
                 >
                   FAQ & Process
                 </button>
@@ -154,103 +106,83 @@ export function Footer({ onNavigate, className = '' }: FooterProps) {
               <li>
                 <button
                   onClick={() => handleNav('submissions')}
-                  className="hover:text-white hover:translate-x-1 transition-all cursor-pointer text-white/70 inline-block"
+                  className="text-neutral-800 hover:text-black hover:translate-x-1 transition-all cursor-pointer block"
                 >
                   Intake Submissions
                 </button>
               </li>
-              <li>
+              <li className="pt-2">
                 <button
                   onClick={() => handleNav('contact')}
-                  className="hover:text-[#60a5fa] text-[#1368e6] transition-colors cursor-pointer flex items-center gap-1 font-semibold pt-1"
+                  className="text-[#1368e6] hover:text-[#0f54b9] font-semibold transition-colors cursor-pointer inline-flex items-center gap-1 group"
                 >
-                  Start a Project <ArrowUpRight className="w-3 h-3" />
+                  <span>Start a Project</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Social & Connect */}
-          <div className="md:col-span-2 space-y-3">
-            <div className="text-[11px] font-mono tracking-widest text-white/40 uppercase">
-              // CONNECT
-            </div>
-            <ul className="space-y-2.5 text-xs font-mono text-white/70">
-              <li>
-                <a
-                  href="https://x.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white hover:translate-x-1 transition-all flex items-center gap-1"
-                >
-                  <span>X / Twitter</span>
-                  <ArrowUpRight className="w-3 h-3 opacity-50" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white hover:translate-x-1 transition-all flex items-center gap-1"
-                >
-                  <span>LinkedIn</span>
-                  <ArrowUpRight className="w-3 h-3 opacity-50" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white hover:translate-x-1 transition-all flex items-center gap-1"
-                >
-                  <span>GitHub</span>
-                  <ArrowUpRight className="w-3 h-3 opacity-50" />
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Real IST Live Clock & Coordinates */}
-          <div className="md:col-span-2 space-y-3">
-            <div className="text-[11px] font-mono tracking-widest text-white/40 uppercase">
+          {/* Column 3: Timezone & Studio Location (lg:col-span-2) */}
+          <div className="lg:col-span-2 space-y-4">
+            <div className="text-[12px] font-mono tracking-widest text-neutral-500 uppercase font-semibold">
               // TIMEZONE
             </div>
-            <div className="space-y-2.5 text-xs font-mono">
-              <div className="flex items-center gap-2 text-white bg-white/[0.04] border border-white/10 px-3 py-2 rounded-xl">
-                <Clock className="w-3.5 h-3.5 text-[#1368e6]" />
-                <span className="font-semibold text-[11px]">{istTime || 'IST LIVE'}</span>
+            <div className="space-y-3">
+              <div className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-black/5 border border-black/10 text-xs sm:text-[13px] font-mono text-[#111111] shadow-sm backdrop-blur-sm">
+                <Clock className="w-4 h-4 text-[#1368e6]" />
+                <span className="font-semibold">{istTime || '07:41:49 AM IST'}</span>
               </div>
-              <div className="flex items-center gap-1.5 text-white/50 text-[11px] px-1">
-                <Globe className="w-3 h-3 text-white/30" />
+              <div className="flex items-center gap-2 text-neutral-600 text-xs font-mono">
+                <Globe className="w-3.5 h-3.5 text-neutral-500" />
                 <span>Asia/Kolkata (UTC+5:30)</span>
               </div>
             </div>
           </div>
+
+          {/* Column 4: Social Action (lg:col-span-2) - Behance Only, no LinkedIn or GitHub */}
+          <div className="lg:col-span-2 space-y-4">
+            <div className="text-[12px] font-mono tracking-widest text-neutral-500 uppercase font-semibold">
+              // SOCIALS
+            </div>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.behance.net/kartikmishra14"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Behance Profile"
+                className="w-11 h-11 rounded-full bg-[#1368e6] hover:bg-[#0f54b9] text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-[0_4px_16px_rgba(19,104,230,0.3)] cursor-pointer"
+              >
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.062 0-5.625-2.859-5.625-5.625 0-3.328 1.953-5.625 5.547-5.625 3.734 0 5.188 2.5 5.188 5.172 0 .641-.047 1.078-.078 1.484h-7.875c.094 1.703 1.25 2.547 2.875 2.547 1.453 0 2.219-.719 2.578-1.578h2.492zm-2.812-4.125c-.094-1.219-.781-2.281-2.344-2.281-1.469 0-2.281 1.016-2.438 2.281h4.782zm-12.914 7.125h-8v-16h7.797c3.563 0 5.453 1.625 5.453 4.672 0 1.844-.922 3.172-2.312 3.844 1.844.625 2.875 2.141 2.875 4.266 0 3.516-2.203 3.218-5.813 3.218zm-4.781-9.438h4.484c1.5 0 2.547-.641 2.547-1.922 0-1.25-.953-1.844-2.484-1.844h-4.547v3.766zm0 6.641h4.641c1.719 0 2.859-.75 2.859-2.188 0-1.5-.969-2.219-2.734-2.219h-4.766v4.407z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* 3. Bottom Row (Matching Light Stone Palette & Black Text) */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full pt-6 border-t border-black/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-600 uppercase tracking-wider">
+        <div>
+          © 2026 HUTCHFORGE STUDIO. ALL RIGHTS RESERVED.
         </div>
 
-        {/* Bottom Bar: Copyright */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-white/40">
-          <div>
-            © {new Date().getFullYear()} HUTCHFORGE STUDIO. ALL RIGHTS RESERVED.
-          </div>
-
-          <div className="flex items-center space-x-6">
-            <button
-              onClick={() => handleNav('privacy')}
-              className="hover:text-white transition-colors cursor-pointer uppercase"
-            >
-              Privacy Policy
-            </button>
-            <span className="text-white/20">•</span>
-            <button
-              onClick={() => handleNav('terms')}
-              className="hover:text-white transition-colors cursor-pointer uppercase"
-            >
-              Terms of Service
-            </button>
-          </div>
+        <div className="flex items-center gap-6">
+          <button
+            onClick={() => handleNav('privacy')}
+            className="hover:text-black transition-colors cursor-pointer"
+          >
+            PRIVACY POLICY
+          </button>
+          <span>•</span>
+          <button
+            onClick={() => handleNav('terms')}
+            className="hover:text-black transition-colors cursor-pointer"
+          >
+            TERMS OF SERVICE
+          </button>
         </div>
       </div>
     </footer>

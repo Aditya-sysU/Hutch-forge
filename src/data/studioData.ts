@@ -4,7 +4,7 @@ export const PROCESS_PHASES: ProcessPhase[] = [
   {
     number: '01',
     title: 'Blueprint',
-    timeline: '1–2 Weeks',
+    timeline: '',
     description:
       'We begin with in-depth research and strategic scoping. We analyze your market, study competitor benchmarks, define core user journeys, and architect the foundational sitemap and wireframes before touching visual styling.',
     deliverables: [
@@ -19,7 +19,7 @@ export const PROCESS_PHASES: ProcessPhase[] = [
   {
     number: '02',
     title: 'Spark',
-    timeline: '1–2 Weeks',
+    timeline: '',
     description:
       'The creative exploration phase. We develop bespoke visual concepts, typography scales, design systems, and high-fidelity interactive Figma prototypes to establish your product’s unmistakable brand presence.',
     deliverables: [
@@ -34,7 +34,7 @@ export const PROCESS_PHASES: ProcessPhase[] = [
   {
     number: '03',
     title: 'Build',
-    timeline: 'Production & Launch',
+    timeline: '',
     description:
       'The same multidisciplinary team engineers your frontend into clean, responsive, production-ready code. Pixel-perfect implementation in modern React, Next.js, or Framer with sub-second performance.',
     deliverables: [
@@ -53,7 +53,6 @@ export const ENGAGEMENT_PLANS: EngagementPlan[] = [
     id: 'project-based',
     name: 'Project-Based',
     tagline: 'Dedicated sprint from concept to launch',
-    badge: 'FLAGSHIP LAUNCH',
     priceDescriptor: 'Fixed Scope & Timeline',
     description:
       'Perfect for companies launching a new product, rebuilding their core digital flagship, or needing an end-to-end design & frontend delivery.',
@@ -74,7 +73,6 @@ export const ENGAGEMENT_PLANS: EngagementPlan[] = [
     id: 'monthly-retainer',
     name: 'Design Retainer',
     tagline: 'Continuous design & frontend bandwidth',
-    badge: 'DEDICATED PARTNERSHIP',
     priceDescriptor: 'Monthly Bandwidth Sprint',
     description:
       'An embedded creative partner for fast-moving teams who need continuous UI/UX design, new feature rollouts, and ongoing frontend polish.',

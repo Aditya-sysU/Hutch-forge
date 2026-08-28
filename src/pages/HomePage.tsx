@@ -4,7 +4,8 @@ import { PROJECTS } from '../data/projects';
 import { SERVICES } from '../data/services';
 import { PROCESS_PHASES, ENGAGEMENT_PLANS } from '../data/studioData';
 import { FAQS } from '../data/faq';
-import { WaveHero } from '../components/WaveHero';
+import { MetallicHero } from '../components/MetallicHero';
+import { StaggeredHeading, StaggeredBadge } from '../components/TextReveal';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   ArrowUpRight,
@@ -19,6 +20,7 @@ import {
   Check,
   ShieldCheck,
   Globe,
+  ChevronDown,
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -26,7 +28,8 @@ interface HomePageProps {
 }
 
 export function HomePage({ onNavigate }: HomePageProps) {
-  const [openFaqIds, setOpenFaqIds] = useState<string[]>(['what-we-do', 'design-and-dev']);
+  const [openFaqIds, setOpenFaqIds] = useState<string[]>([]);
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
   const toggleFaq = (id: string) => {
     setOpenFaqIds((prev) =>
@@ -34,16 +37,24 @@ export function HomePage({ onNavigate }: HomePageProps) {
     );
   };
 
+  const getDomain = (url: string) => {
+    try {
+      return new URL(url).hostname.replace(/^www\./, '');
+    } catch {
+      return url;
+    }
+  };
+
   const phaseIcons = [Compass, Sparkles, Terminal];
-  const realProjects = PROJECTS.slice(0, 2);
+  const displayedProjects = showAllProjects ? PROJECTS : PROJECTS.slice(0, 2);
 
   return (
     <div className="relative w-full bg-[#000000] text-[#F5F5F5] selection:bg-[#1368e6] selection:text-white">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION: Interactive Canvas & 26px Centered Typography            */}
+      {/* 1. HERO SECTION: 3D Ribbed Metallic Cinematic Canvas                       */}
       {/* ========================================================================= */}
       <section className="relative w-full">
-        <WaveHero onNavigate={onNavigate} />
+        <MetallicHero onNavigate={onNavigate} />
       </section>
 
       {/* ========================================================================= */}
@@ -53,13 +64,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div className="max-w-7xl mx-auto w-full space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1368e6]/10 border border-[#1368e6]/20 text-[11px] font-mono text-[#93c5fd] mb-3">
-                <Layers className="w-3.5 h-3.5 text-[#1368e6]" />
-                <span>SERVICES & DISCIPLINES</span>
-              </div>
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-white font-sans">
-                End-to-End Digital Craft
-              </h2>
+              <StaggeredBadge className="mb-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1368e6]/10 border border-[#1368e6]/20 text-[11px] font-mono text-[#93c5fd]">
+                  <Layers className="w-3.5 h-3.5 text-[#1368e6]" />
+                  <span>SERVICES & DISCIPLINES</span>
+                </div>
+              </StaggeredBadge>
+              <StaggeredHeading
+                text="End-to-End Digital Craft"
+                as="h2"
+                className="text-2xl sm:text-[28px] font-extrabold uppercase tracking-tight text-white font-sans"
+              />
             </div>
             <button
               onClick={() => onNavigate('services')}
@@ -88,9 +103,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
                       </span>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-white tracking-tight">
-                      {service.title}
-                    </h3>
+                    <StaggeredHeading
+                      text={service.title}
+                      as="h3"
+                      delay={0.1 + index * 0.05}
+                      className="text-2xl font-bold text-white tracking-tight"
+                    />
 
                     <p className="text-xs sm:text-sm text-white/60 leading-relaxed font-light">
                       {service.description}
@@ -129,16 +147,20 @@ export function HomePage({ onNavigate }: HomePageProps) {
       {/* ========================================================================= */}
       {/* 3. WORKFLOW: The 3-Phase Workflow                                         */}
       {/* ========================================================================= */}
-      <section className="w-full py-24 sm:py-32 px-5 sm:px-8 lg:px-12 bg-[#080808] border-t border-white/10">
+      <section className="w-full py-24 sm:py-32 px-5 sm:px-8 lg:px-12 bg-[#ECECEC] text-[#111111] border-t border-neutral-300">
         <div className="max-w-7xl mx-auto w-full space-y-12">
-          <div className="border-b border-white/10 pb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1368e6]/10 border border-[#1368e6]/20 text-[11px] font-mono text-[#93c5fd] mb-3">
-              <Compass className="w-3.5 h-3.5 text-[#1368e6]" />
-              <span>THE 3-PHASE WORKFLOW</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-white font-sans">
-              From Research to Launch
-            </h2>
+          <div className="border-b border-black/10 pb-8">
+            <StaggeredBadge className="mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-[11px] font-mono text-neutral-800">
+                <Compass className="w-3.5 h-3.5 text-[#1368e6]" />
+                <span>THE 3-PHASE WORKFLOW</span>
+              </div>
+            </StaggeredBadge>
+            <StaggeredHeading
+              text="From Research to Launch"
+              as="h2"
+              className="text-2xl sm:text-[28px] font-extrabold uppercase tracking-tight text-[#111111] font-sans"
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -147,43 +169,47 @@ export function HomePage({ onNavigate }: HomePageProps) {
               return (
                 <div
                   key={phase.number}
-                  className="bento-card p-6 sm:p-8 flex flex-col justify-between space-y-6 relative group bg-[#0d0d0d] border border-white/10 hover:border-[#1368e6]/50 transition-all duration-300 h-full shadow-lg"
+                  className="rounded-[28px] p-7 sm:p-8 flex flex-col justify-between space-y-6 relative group bg-white text-[#111111] border border-neutral-200/80 hover:border-neutral-300 transition-all duration-300 h-full shadow-sm hover:shadow-xl hover:-translate-y-0.5"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="text-3xl font-black text-white/20 group-hover:text-[#1368e6] transition-colors font-mono">
-                        {phase.number}
-                      </span>
-                      <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-white/70">
-                        {phase.timeline}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-lg bg-[#1368e6]/10 border border-[#1368e6]/20 flex items-center justify-center text-[#1368e6]">
+                      <div className="w-9 h-9 rounded-xl bg-black/5 border border-black/10 flex items-center justify-center text-neutral-800">
                         <Icon className="w-4 h-4" />
                       </div>
-                      <h3 className="text-2xl font-bold text-white tracking-tight">
-                        {phase.title}
-                      </h3>
+                      <span className="text-2xl font-black text-neutral-400 group-hover:text-neutral-900 transition-colors font-mono">
+                        {phase.number}
+                      </span>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-white/60 leading-relaxed font-light">
+                    <StaggeredHeading
+                      text={phase.title}
+                      as="h3"
+                      delay={0.1 + idx * 0.05}
+                      className="text-2xl font-extrabold text-[#111111] tracking-tight"
+                    />
+
+                    <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
                       {phase.description}
                     </p>
 
-                    <div className="space-y-2 pt-2 border-t border-white/10">
+                    <div className="space-y-2 pt-3 border-t border-black/10">
                       <ul className="space-y-1.5">
                         {phase.deliverables.map((item, i) => (
                           <li
                             key={i}
-                            className="flex items-start gap-2 text-xs text-white/80"
+                            className="flex items-start gap-2 text-xs text-neutral-700 font-medium"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#1368e6] shrink-0 mt-1.5" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-neutral-900 shrink-0 mt-1.5" />
                             <span>{item}</span>
                           </li>
                         ))}
                       </ul>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 flex justify-end">
+                    <div className="w-10 h-10 rounded-full bg-black/5 group-hover:bg-neutral-900 group-hover:text-white text-neutral-800 flex items-center justify-center transition-all duration-300 shadow-sm">
+                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                   </div>
                 </div>
@@ -201,13 +227,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
           {/* Section Header */}
           <div className="border-b border-white/10 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1368e6]/10 border border-[#1368e6]/25 text-[11px] font-mono text-[#93c5fd] mb-3">
-                <Sparkles className="w-3.5 h-3.5 text-[#1368e6]" />
-                <span>CURATED RECENT COMMISSIONS</span>
-              </div>
-              <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-[-0.04em] text-white font-sans">
-                Projects we're proud of.
-              </h2>
+              <StaggeredBadge className="mb-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1368e6]/10 border border-[#1368e6]/25 text-[11px] font-mono text-[#93c5fd]">
+                  <Sparkles className="w-3.5 h-3.5 text-[#1368e6]" />
+                  <span>CURATED RECENT COMMISSIONS</span>
+                </div>
+              </StaggeredBadge>
+              <StaggeredHeading
+                text="Projects we're proud of."
+                as="h2"
+                className="text-2xl sm:text-[28px] font-extrabold tracking-tight text-white font-sans"
+              />
             </div>
             <button
               onClick={() => onNavigate('work')}
@@ -220,7 +250,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
           {/* Real Projects Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-            {realProjects.map((project) => (
+            {displayedProjects.map((project) => (
               <a
                 key={project.id}
                 href={project.liveUrl}
@@ -238,7 +268,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                       <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
                     </div>
                     <span className="text-[12px] font-mono text-white/80 truncate">
-                      {project.id === 'vyvhr' ? 'https://vyvhr.com' : 'https://driftwoodpizzaandsubs.com'}
+                      {project.liveUrl}
                     </span>
                     <ExternalLink className="w-3.5 h-3.5 text-white/40 group-hover:text-white transition-colors" />
                   </div>
@@ -254,7 +284,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
                     <div className="absolute bottom-4 left-4 px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-xs font-mono text-white flex items-center gap-2 shadow-lg z-20">
                       <Globe className="w-3.5 h-3.5 text-[#1368e6]" />
-                      <span>{project.id === 'vyvhr' ? 'vyvhr.com' : 'driftwoodpizzaandsubs.com'}</span>
+                      <span>{getDomain(project.liveUrl)}</span>
                     </div>
                   </div>
                 </div>
@@ -262,7 +292,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 {/* Real Website Info & Direct Link */}
                 <div className="p-6 sm:p-8 space-y-4 flex-1 flex flex-col justify-between bg-[#0a0a0a]">
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-2 flex-wrap">
                       <h3 className="text-2xl font-bold tracking-tight text-white group-hover:text-[#60a5fa] transition-colors">
                         {project.title}
                       </h3>
@@ -288,6 +318,22 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </a>
             ))}
           </div>
+
+          {/* Small Explore More / See More Button */}
+          <div className="flex flex-col sm:flex-row items-center justify-center pt-4">
+            <button
+              onClick={() => setShowAllProjects(!showAllProjects)}
+              className="group inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#0d0d0d] hover:bg-[#1368e6] border border-white/20 hover:border-[#1368e6] text-white text-xs font-semibold tracking-wide transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.5)] hover:shadow-[0_6px_24px_rgba(19,104,230,0.5)] cursor-pointer active:scale-95"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#1368e6] group-hover:text-white transition-colors" />
+              <span>{showAllProjects ? 'Show Less Projects' : 'Explore More Projects (3 More)'}</span>
+              <ChevronDown
+                className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                  showAllProjects ? 'rotate-180 text-white' : 'text-white/60 group-hover:text-white'
+                }`}
+              />
+            </button>
+          </div>
         </div>
       </section>
 
@@ -297,13 +343,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <section className="w-full py-24 sm:py-32 px-5 sm:px-8 lg:px-12 bg-[#040404] border-t border-white/10">
         <div className="max-w-7xl mx-auto w-full space-y-12">
           <div className="border-b border-white/10 pb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1368e6]/10 border border-[#1368e6]/20 text-[11px] font-mono text-[#93c5fd] mb-3">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#1368e6]" />
-              <span>COLLABORATION MODELS</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-white font-sans">
-              Transparent Engagement
-            </h2>
+            <StaggeredBadge className="mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1368e6]/10 border border-[#1368e6]/20 text-[11px] font-mono text-[#93c5fd]">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#1368e6]" />
+                <span>COLLABORATION MODELS</span>
+              </div>
+            </StaggeredBadge>
+            <StaggeredHeading
+              text="Transparent Engagement"
+              as="h2"
+              className="text-2xl sm:text-[28px] font-extrabold uppercase tracking-tight text-white font-sans"
+            />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -324,12 +374,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
                 <div className="space-y-6">
                   <div className="space-y-2">
-                    <span className="text-xs font-mono text-[#93c5fd] font-semibold tracking-wider uppercase">
-                      {plan.badge}
-                    </span>
-                    <h3 className="text-3xl font-extrabold text-white tracking-tight">
-                      {plan.name}
-                    </h3>
+                    <StaggeredHeading
+                      text={plan.name}
+                      as="h3"
+                      delay={0.1}
+                      className="text-3xl font-extrabold text-white tracking-tight"
+                    />
                     <p className="text-xs font-mono text-white/50">{plan.tagline}</p>
                   </div>
 
@@ -376,13 +426,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <section className="w-full py-24 sm:py-32 px-5 sm:px-8 lg:px-12 bg-[#000000] border-t border-white/10">
         <div className="max-w-4xl mx-auto w-full space-y-12">
           <div className="border-b border-white/10 pb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1368e6]/10 border border-[#1368e6]/20 text-[11px] font-mono text-[#93c5fd] mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-[#1368e6]" />
-              <span>COMMON INQUIRIES</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-white font-sans">
-              Frequently Asked Questions
-            </h2>
+            <StaggeredBadge className="mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1368e6]/10 border border-[#1368e6]/20 text-[11px] font-mono text-[#93c5fd]">
+                <Sparkles className="w-3.5 h-3.5 text-[#1368e6]" />
+                <span>COMMON INQUIRIES</span>
+              </div>
+            </StaggeredBadge>
+            <StaggeredHeading
+              text="Frequently Asked Questions"
+              as="h2"
+              className="text-2xl sm:text-[28px] font-extrabold uppercase tracking-tight text-white font-sans"
+            />
           </div>
 
           <div className="divide-y divide-white/10 border-y border-white/10">

@@ -8,6 +8,14 @@ interface WorkPageProps {
 }
 
 export function WorkPage({ onNavigate }: WorkPageProps) {
+  const getDomain = (url: string) => {
+    try {
+      return new URL(url).hostname.replace(/^www\./, '');
+    } catch {
+      return url;
+    }
+  };
+
   return (
     <div className="w-full pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-[#000000] min-h-screen text-[#F5F5F5]">
       <div className="max-w-7xl mx-auto space-y-16">
@@ -17,7 +25,7 @@ export function WorkPage({ onNavigate }: WorkPageProps) {
             <Sparkles className="w-3.5 h-3.5 text-[#1368e6]" />
             <span>SELECTED CLIENT COMMISSIONS</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-extrabold uppercase tracking-tight text-white font-sans">
+          <h1 className="text-[26px] font-extrabold tracking-tight text-white font-sans">
             Projects we're proud of.
           </h1>
         </div>
@@ -41,7 +49,7 @@ export function WorkPage({ onNavigate }: WorkPageProps) {
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
                   </div>
                   <span className="text-[12px] font-mono text-white/80 truncate">
-                    {project.id === 'vyvhr' ? 'https://vyvhr.com' : 'https://driftwoodpizzaandsubs.com'}
+                    {project.liveUrl}
                   </span>
                   <ExternalLink className="w-3.5 h-3.5 text-white/40 group-hover:text-white transition-colors" />
                 </div>
@@ -58,7 +66,7 @@ export function WorkPage({ onNavigate }: WorkPageProps) {
 
                   <div className="absolute bottom-4 left-4 px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-xs font-mono text-white flex items-center gap-2 shadow-lg z-20">
                     <Globe className="w-3.5 h-3.5 text-[#1368e6]" />
-                    <span>{project.id === 'vyvhr' ? 'vyvhr.com' : 'driftwoodpizzaandsubs.com'}</span>
+                    <span>{getDomain(project.liveUrl)}</span>
                   </div>
                 </div>
               </div>
@@ -66,7 +74,7 @@ export function WorkPage({ onNavigate }: WorkPageProps) {
               {/* Card Meta & Content */}
               <div className="p-6 sm:p-8 space-y-4 flex-1 flex flex-col justify-between bg-[#0a0a0a]">
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
                     <h3 className="text-2xl font-bold tracking-tight text-white group-hover:text-[#60a5fa] transition-colors">
                       {project.title}
                     </h3>
@@ -96,7 +104,7 @@ export function WorkPage({ onNavigate }: WorkPageProps) {
         {/* Start a Project Callout */}
         <div className="p-8 sm:p-12 rounded-3xl bg-[#080808] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center sm:text-left">
-            <h3 className="text-xl sm:text-2xl font-bold uppercase tracking-tight text-white">
+            <h3 className="text-[26px] font-extrabold tracking-tight text-white">
               Ready to commission your digital flagship?
             </h3>
             <p className="text-xs font-mono text-white/50">

@@ -235,8 +235,8 @@ export function WaveHero({ onNavigate, onExploreClick }: WaveHeroProps) {
         </div>
       </div>
 
-      {/* Clean 26px Centered Typography Formed from White Liquid */}
-      <div className="relative z-20 text-center max-w-4xl mx-auto px-6">
+      {/* Clean 38px Centered Typography Formed from White Liquid */}
+      <div className="relative z-20 text-center max-w-5xl mx-auto px-6">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -250,7 +250,7 @@ export function WaveHero({ onNavigate, onExploreClick }: WaveHeroProps) {
               },
             },
           }}
-          className="flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3.5 gap-y-1.5"
+          className="flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-4 md:gap-x-5 gap-y-2"
         >
           {['Building', 'experiences', 'from', 'scratch'].map((word, wordIdx) => (
             <motion.div
@@ -287,8 +287,8 @@ export function WaveHero({ onNavigate, onExploreClick }: WaveHeroProps) {
                 className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-1.5 h-3.5 bg-gradient-to-b from-white to-transparent rounded-full pointer-events-none"
               />
 
-              {/* Exact 26px High-End Centered Text */}
-              <span className="text-[23px] sm:text-[26px] font-medium tracking-tight text-white leading-normal drop-shadow-[0_2px_14px_rgba(255,255,255,0.45)] group-hover:text-[#93c5fd] transition-colors duration-300">
+              {/* Exact 38px High-End Centered Text */}
+              <span className="text-[32px] sm:text-[36px] md:text-[38px] font-medium tracking-tight text-white leading-tight drop-shadow-[0_2px_16px_rgba(255,255,255,0.45)] group-hover:text-[#93c5fd] transition-colors duration-300">
                 {word}
               </span>
 

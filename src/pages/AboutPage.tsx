@@ -12,31 +12,26 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
       <div className="max-w-4xl mx-auto space-y-16">
         {/* Main Section */}
         <div className="space-y-6 border-b border-white/10 pb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1368e6]/10 border border-[#1368e6]/25 text-xs font-mono text-[#93c5fd]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1368e6]/10 border border-[#1368e6]/25 text-xs font-mono text-[#93c5fd] lowercase">
             <Sparkles className="w-3.5 h-3.5 text-[#1368e6]" />
-            <span>ABOUT HUTCHFORGE</span>
+            <span>about hutchforge</span>
           </div>
 
-          <h1 className="text-3xl font-extrabold tracking-tight text-white uppercase font-sans">
-            About Hutchforge
+          <h1 className="text-[26px] font-extrabold tracking-tight text-white lowercase font-sans">
+            about hutchforge
           </h1>
 
           {/* Primary Statement */}
           <div className="space-y-4 text-sm text-white/80 leading-relaxed font-light">
             <p className="text-sm font-semibold text-white">
-              Hutchforge builds websites for brands that care about how they show up.
+              hutchforge builds websites for brands that care about how they show up.
             </p>
             <p className="text-sm text-white/70">
               From UI/UX and web design to development and landing pages, we bring the visual and functional parts of a website together in one place.
             </p>
             <p className="text-sm text-white/70">
-              We keep things clear, considered, and built around the brand — not unnecessary features or crowded design.
+              We keep things clear, considered, and built around the brand, not unnecessary features or crowded design.
             </p>
-            <div className="pt-2">
-              <span className="text-sm font-bold text-[#93c5fd] font-mono">
-                Design with purpose. Built to work.
-              </span>
-            </div>
           </div>
         </div>
 
@@ -46,7 +41,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             <span className="text-xs font-mono text-[#1368e6] font-semibold uppercase">
               01 // AUDIENCE
             </span>
-            <h2 className="text-3xl font-extrabold tracking-tight text-white uppercase font-sans">
+            <h2 className="text-[26px] font-extrabold tracking-tight text-white font-sans">
               Who We Partner With
             </h2>
           </div>
@@ -78,7 +73,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             <span className="text-xs font-mono text-[#1368e6] font-semibold uppercase">
               02 // PRINCIPLES
             </span>
-            <h2 className="text-3xl font-extrabold tracking-tight text-white uppercase font-sans">
+            <h2 className="text-[26px] font-extrabold tracking-tight text-white font-sans">
               Our Core Standards
             </h2>
           </div>
@@ -119,7 +114,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
         {/* Direct Action */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
           <div className="space-y-1">
-            <h3 className="text-3xl font-extrabold tracking-tight text-white uppercase font-sans">
+            <h3 className="text-[26px] font-extrabold tracking-tight text-white font-sans">
               Ready to start your project?
             </h3>
             <p className="text-sm text-white/60 font-light">

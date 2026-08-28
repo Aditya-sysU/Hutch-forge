@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PageRoute } from '../types';
 import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, Menu, X } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 
 interface NavigationProps {
   currentRoute: PageRoute;
@@ -33,43 +34,20 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
       {/* Top Floating Glass/Black Header */}
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 sm:px-10 md:px-14 py-4 sm:py-6 pointer-events-none transition-all duration-300">
         
-        {/* Left: Studio Brand & Logo always visible in top left */}
-        <div className="pointer-events-auto min-w-[140px]">
-          <button
-            onClick={() => handleNavClick('home')}
-            className="flex items-center gap-2.5 group cursor-pointer focus:outline-none transition-transform hover:scale-105"
-            aria-label="Hutchforge Home"
-          >
-            {/* Fluid stylized double-arc logo icon */}
-            <div className="w-8 h-8 rounded-full bg-[#0d0d0d] border border-white/15 flex items-center justify-center group-hover:border-[#1368e6] group-hover:bg-[#1368e6]/10 transition-all shadow-md">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                className="w-4 h-4 text-white group-hover:text-[#60a5fa] transition-colors"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M4 14c2-4 5-6 8-6s6 2 8 6" />
-                <path d="M4 18c2-4 5-6 8-6s6 2 8 6" />
-              </svg>
-            </div>
-            <span className="font-black text-[15px] tracking-[-0.04em] text-white group-hover:text-white lowercase font-sans">
-              hutchforge
-            </span>
-          </button>
+        {/* Left: Studio Brand & Logo always visible in top left (doubled in size) */}
+        <div className="pointer-events-auto min-w-[160px]">
+          <BrandLogo onClick={() => handleNavClick('home')} size="large" />
         </div>
 
-        {/* Center: Aesthetic Minimalist Navigation Capsule */}
+        {/* Center: Aesthetic Minimalist Navigation Capsule with extended length */}
         <nav
           aria-label="Main Navigation"
-          className="pointer-events-auto hidden md:flex items-center p-1.5 rounded-full bg-[#0a0a0a]/85 backdrop-blur-xl border border-white/[0.1] shadow-[0_12px_36px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.08)] transition-all"
+          className="pointer-events-auto hidden md:flex items-center p-2 rounded-full bg-[#0a0a0a]/85 backdrop-blur-xl border border-white/[0.1] shadow-[0_12px_36px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.08)] transition-all min-w-[340px] justify-center"
         >
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2 w-full justify-around px-1">
             <button
               onClick={() => handleNavClick('about')}
-              className={`relative px-4 py-2 rounded-full text-xs tracking-tight transition-all duration-200 cursor-pointer ${
+              className={`relative flex-1 text-center px-6 py-2.5 rounded-full text-xs tracking-tight transition-all duration-200 cursor-pointer ${
                 currentRoute === 'about'
                   ? 'text-white bg-white/[0.12] font-semibold shadow-sm'
                   : 'text-white/70 hover:text-white hover:bg-white/[0.06] font-medium'
@@ -80,7 +58,7 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
 
             <button
               onClick={() => handleNavClick('work')}
-              className={`relative px-4 py-2 rounded-full text-xs tracking-tight transition-all duration-200 cursor-pointer ${
+              className={`relative flex-1 text-center px-6 py-2.5 rounded-full text-xs tracking-tight transition-all duration-200 cursor-pointer ${
                 currentRoute === 'work'
                   ? 'text-white bg-white/[0.12] font-semibold shadow-sm'
                   : 'text-white/70 hover:text-white hover:bg-white/[0.06] font-medium'
@@ -91,7 +69,7 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
 
             <button
               onClick={() => handleNavClick('services')}
-              className={`relative px-4 py-2 rounded-full text-xs tracking-tight transition-all duration-200 cursor-pointer ${
+              className={`relative flex-1 text-center px-6 py-2.5 rounded-full text-xs tracking-tight transition-all duration-200 cursor-pointer ${
                 currentRoute === 'services'
                   ? 'text-white bg-white/[0.12] font-semibold shadow-sm'
                   : 'text-white/70 hover:text-white hover:bg-white/[0.06] font-medium'
@@ -102,13 +80,13 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
           </div>
         </nav>
 
-        {/* Right: Black Color Pill Button "✦ Start a project" */}
+        {/* Right: Black Color Pill Button "✦ Start a project" with Deep Blue #1368e6 Hover */}
         <div className="pointer-events-auto flex items-center gap-3">
           <button
             onClick={() => handleNavClick('contact')}
-            className="flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#000000] hover:bg-[#121212] border border-white/20 hover:border-white/40 text-white text-xs font-semibold tracking-wide transition-all shadow-[0_4px_20px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] cursor-pointer active:scale-95 group"
+            className="flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#000000] hover:bg-[#1368e6] border border-white/20 hover:border-[#1368e6] text-white text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] hover:shadow-[0_6px_28px_rgba(19,104,230,0.6)] cursor-pointer active:scale-95 group"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#1368e6] group-hover:rotate-12 group-hover:text-[#60a5fa] transition-all" />
+            <Sparkles className="w-3.5 h-3.5 text-[#1368e6] group-hover:text-white group-hover:rotate-12 transition-all duration-300" />
             <span>Start a project</span>
           </button>
 
@@ -175,9 +153,9 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
 
             <button
               onClick={() => handleNavClick('contact')}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#000000] border border-white/30 text-white font-semibold text-xs mt-2"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#000000] hover:bg-[#1368e6] border border-white/30 hover:border-[#1368e6] text-white font-semibold text-xs mt-2 transition-all duration-300 shadow-md group"
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#1368e6]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#1368e6] group-hover:text-white transition-colors" />
               <span>Start a project</span>
             </button>
           </motion.div>

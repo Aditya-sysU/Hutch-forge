@@ -112,7 +112,7 @@ export function SubmissionsPage({ onNavigate }: SubmissionsPageProps) {
               <Sparkles className="w-3.5 h-3.5 text-[#1368e6]" />
               <span>INTAKE PIPELINE</span>
             </div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-white uppercase font-sans">
+            <h1 className="text-[26px] font-extrabold tracking-tight text-white font-sans">
               Recorded Submissions
             </h1>
             <p className="text-sm text-white/70 max-w-2xl font-light">
@@ -170,7 +170,7 @@ export function SubmissionsPage({ onNavigate }: SubmissionsPageProps) {
           </div>
         ) : filtered.length === 0 ? (
           <div className="py-20 text-center space-y-3 rounded-2xl bg-[#080808] border border-white/10 p-8">
-            <h2 className="text-3xl font-extrabold text-white uppercase font-sans">
+            <h2 className="text-[26px] font-extrabold text-white font-sans">
               No Submissions Found
             </h2>
             <p className="text-sm text-white/60">

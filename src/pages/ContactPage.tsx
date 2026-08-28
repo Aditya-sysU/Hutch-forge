@@ -181,7 +181,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
             <Sparkles className="w-3.5 h-3.5 text-[#1368e6]" />
             <span>START A PROJECT</span>
           </div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-white uppercase font-sans">
+          <h1 className="text-[26px] font-extrabold tracking-tight text-white font-sans">
             Start a Project
           </h1>
           <p className="text-sm text-white/70 max-w-2xl leading-relaxed font-light">
@@ -198,7 +198,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
           >
             <div className="flex items-center gap-3 text-emerald-400">
               <CheckCircle2 className="w-6 h-6 shrink-0 text-emerald-400" />
-              <h2 className="text-3xl font-extrabold tracking-tight text-white uppercase font-sans">
+              <h2 className="text-[26px] font-extrabold tracking-tight text-white font-sans">
                 Request Received
               </h2>
             </div>

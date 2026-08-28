@@ -68,7 +68,7 @@
 
 /* Primary Pill Button */
 .btn-pill-primary {
-  background: #0055FF;
+  background: #1368e6;
   color: #ffffff;
   padding: 10px 22px;
   border-radius: 9999px;
@@ -79,14 +79,15 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 14px rgba(0, 85, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 16px rgba(19, 104, 230, 0.4);
 }
 
 .btn-pill-primary:hover {
-  background: #0066FF;
+  background: #0f54bc;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0, 85, 255, 0.5);
+  border-color: #1368e6;
+  box-shadow: 0 6px 24px rgba(19, 104, 230, 0.65);
 }
 
 .btn-pill-primary:active {
@@ -110,9 +111,10 @@
 }
 
 .btn-pill-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: #1368e6;
+  border-color: #1368e6;
   color: #ffffff;
+  box-shadow: 0 4px 20px rgba(19, 104, 230, 0.45);
 }
 
 /* Modern Project Card */

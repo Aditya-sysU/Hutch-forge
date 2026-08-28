@@ -9,7 +9,7 @@ interface FAQPageProps {
 }
 
 export function FAQPage({ onNavigate }: FAQPageProps) {
-  const [openIds, setOpenIds] = useState<string[]>(['what-we-do', 'design-and-dev']);
+  const [openIds, setOpenIds] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
@@ -39,7 +39,7 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
             <Sparkles className="w-3.5 h-3.5 text-[#0055FF]" />
             <span>ENGAGEMENT & WORKFLOW PROTOCOLS</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-extrabold uppercase tracking-tight text-white font-sans">
+          <h1 className="text-[26px] font-extrabold tracking-tight text-white font-sans">
             Frequently Asked Questions
           </h1>
           <p className="text-sm sm:text-base text-white/60 max-w-2xl leading-relaxed font-light">
@@ -139,7 +139,7 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
         {/* CTA */}
         <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-[#111111] to-[#0a0a0a] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center sm:text-left">
-            <h3 className="text-xl font-bold uppercase tracking-tight text-white">
+            <h3 className="text-[26px] font-extrabold tracking-tight text-white">
               Still have a specific question?
             </h3>
             <p className="text-xs font-mono text-white/50">
