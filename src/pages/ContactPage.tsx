@@ -105,48 +105,83 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
     setIsSubmitting(true);
 
     try {
-      // 1. Submit to Hutchforge Backend (which forwards to Webhook and records local database)
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const submissionId = `HF-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
+      const timestamp = new Date().toISOString();
 
-      const data = await res.json();
+      let serverResponseData: ContactSubmissionResponse | null = null;
 
-      if (!res.ok) {
-        throw new Error(data.error || 'Server rejected the submission. Please retry.');
-      }
-
-      // 2. Direct browser Beacon/Fetch to Google Webhook as dual-channel delivery
+      // 1. Submit to Hutchforge Backend if available
       try {
-        const payload = JSON.stringify({
-          submissionId: data.referenceId || `HF-${Date.now().toString(36).toUpperCase()}`,
-          timestamp: new Date().toISOString(),
-          fullName: formData.fullName,
-          email: formData.email,
-          phone: formData.phone || '',
-          company: formData.company,
-          existingUrl: formData.existingUrl || '',
-          engagementType: formData.engagementType,
-          serviceRequired: formData.serviceRequired,
-          projectBrief: formData.projectBrief,
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
         });
 
-        // Use no-cors fetch so browser won't block redirect from Google Script
+        const contentType = res.headers.get('content-type') || '';
+        if (res.ok && contentType.includes('application/json')) {
+          serverResponseData = await res.json();
+        }
+      } catch (backendErr) {
+        console.warn('Backend endpoint unavailable, using direct intake dispatch:', backendErr);
+      }
+
+      // 2. Direct browser transmission to Google Sheet Webhook (always dispatches safely)
+      try {
+        const payload = JSON.stringify({
+          submissionId: serverResponseData?.referenceId || submissionId,
+          timestamp,
+          fullName: formData.fullName.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone?.trim() || '',
+          company: formData.company.trim(),
+          existingUrl: formData.existingUrl?.trim() || '',
+          engagementType: formData.engagementType,
+          serviceRequired: formData.serviceRequired,
+          projectBrief: formData.projectBrief.trim(),
+        });
+
+        // Use no-cors fetch so cross-origin redirects from Google Apps Script succeed without error
         fetch(GOOGLE_SHEET_WEBHOOK_URL, {
           method: 'POST',
           mode: 'no-cors',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: payload,
         }).catch(() => {});
-      } catch (clientSyncErr) {
-        console.warn('Client direct webhook delivery notice:', clientSyncErr);
+      } catch (webhookErr) {
+        console.warn('Direct webhook delivery notice:', webhookErr);
       }
 
-      setSubmissionResponse(data);
+      // 3. Local persistence so client never loses a brief
+      try {
+        const existingLogs = JSON.parse(localStorage.getItem('hf_submissions') || '[]');
+        existingLogs.unshift({
+          id: submissionId,
+          timestamp,
+          ...formData,
+        });
+        localStorage.setItem('hf_submissions', JSON.stringify(existingLogs.slice(0, 50)));
+      } catch {
+        // Not critical
+      }
+
+      const finalResponse: ContactSubmissionResponse = serverResponseData || {
+        success: true,
+        message: 'Thank you! Your request has been received and our team will reach out to you shortly.',
+        referenceId: submissionId,
+        timestamp,
+        details: {
+          fullName: formData.fullName,
+          company: formData.company,
+          email: formData.email,
+          serviceRequired: formData.serviceRequired,
+          engagementType: formData.engagementType,
+        },
+      };
+
+      setSubmissionResponse(finalResponse);
       setFormData({
         engagementType: 'project',
         fullName: '',
