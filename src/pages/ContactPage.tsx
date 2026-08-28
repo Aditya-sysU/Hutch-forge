@@ -185,7 +185,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
             Start a Project
           </h1>
           <p className="text-sm text-white/70 max-w-2xl leading-relaxed font-light">
-            Tell us about your upcoming launch, website redesign, or digital flagship. Submissions autofill directly into our intake pipeline.
+            Tell us about your upcoming launch, website redesign, or digital flagship.
           </p>
         </div>
 
@@ -245,7 +245,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
             <div className="flex flex-wrap items-center justify-between gap-4 pt-2 text-xs font-mono text-white/40">
               <div className="flex items-center gap-1.5 text-emerald-400">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Status: Logged into Google Sheet pipeline</span>
+                <span>Status: Logged into intake system</span>
               </div>
               <button
                 onClick={() => setSubmissionResponse(null)}
@@ -472,7 +472,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 {isSubmitting ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Transmitting to Google Sheet...</span>
+                    <span>Transmitting inquiry...</span>
                   </>
                 ) : (
                   <>
@@ -485,7 +485,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-white/40">
                 <div className="flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Autofills directly into your Google Sheet</span>
+                  <span>Secure direct transmission</span>
                 </div>
                 <span>Response within 24 hours</span>
               </div>
@@ -494,19 +494,18 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
         )}
 
         {/* Direct Email fallback */}
-        <div className="p-5 rounded-xl bg-[#080808] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/50">
+        <div className="p-5 rounded-xl bg-[#080808] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/60">
           <div>
             <span>Prefer direct email?</span>
             <a
-              href="mailto:direct@hutchforge.studio"
+              href="mailto:hello@hutchforge.in"
               className="text-white hover:text-[#93c5fa] ml-2 underline font-mono text-sm"
             >
-              direct@hutchforge.studio
+              hello@hutchforge.in
             </a>
           </div>
-          <span className="text-emerald-400 text-xs font-mono flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Taking on select commissions
+          <span className="text-white/40 text-xs font-mono">
+            Direct Studio Inquiry
           </span>
         </div>
       </div>

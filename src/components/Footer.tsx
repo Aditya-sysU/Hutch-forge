@@ -123,13 +123,13 @@ export function Footer({ onNavigate, className = '' }: FooterProps) {
             <ul className="space-y-3 text-sm font-medium">
               <li>
                 <a
-                  href="mailto:hello@hutchforge.com"
+                  href="mailto:hello@hutchforge.in"
                   className="inline-flex items-center gap-2.5 text-neutral-800 hover:text-[#1368e6] group transition-colors"
                 >
                   <span className="w-8 h-8 rounded-full bg-black/5 border border-black/10 flex items-center justify-center text-[#1368e6] group-hover:bg-[#1368e6] group-hover:text-white transition-all shadow-sm shrink-0">
                     <Mail className="w-3.5 h-3.5" />
                   </span>
-                  <span className="font-medium text-xs sm:text-[13px] break-all sm:break-normal">hello@hutchforge.com</span>
+                  <span className="font-medium text-xs sm:text-[13px] break-all sm:break-normal">hello@hutchforge.in</span>
                 </a>
               </li>
               <li>
