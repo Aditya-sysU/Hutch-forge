@@ -103,14 +103,6 @@ export function Footer({ onNavigate, className = '' }: FooterProps) {
                   FAQ & Process
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={() => handleNav('submissions')}
-                  className="text-neutral-800 hover:text-black hover:translate-x-1 transition-all cursor-pointer block"
-                >
-                  Intake Submissions
-                </button>
-              </li>
               <li className="pt-2">
                 <button
                   onClick={() => handleNav('contact')}
