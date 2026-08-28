@@ -30,14 +30,37 @@ export function SubmissionsPage({ onNavigate }: SubmissionsPageProps) {
   const fetchSubmissions = async () => {
     setLoading(true);
     try {
+      const localLogs: Submission[] = JSON.parse(localStorage.getItem('hf_submissions') || '[]');
+      
       const res = await fetch('/api/submissions');
       if (res.ok) {
-        const data = await res.json();
-        setSubmissions(data.submissions || []);
-        setSheetUrl(data.sheetUrl || '');
+        const rawText = await res.text();
+        try {
+          const data = JSON.parse(rawText);
+          const serverSubs: Submission[] = data.submissions || [];
+          // Merge unique by id
+          const combined = [...serverSubs];
+          for (const item of localLogs) {
+            if (!combined.some((c) => c.id === item.id)) {
+              combined.push(item);
+            }
+          }
+          setSubmissions(combined);
+          setSheetUrl(data.sheetUrl || '');
+        } catch {
+          setSubmissions(localLogs);
+        }
+      } else {
+        setSubmissions(localLogs);
       }
     } catch (err) {
-      console.error('Error fetching submissions:', err);
+      console.warn('Submissions fetch notice:', err);
+      try {
+        const localLogs = JSON.parse(localStorage.getItem('hf_submissions') || '[]');
+        setSubmissions(localLogs);
+      } catch {
+        setSubmissions([]);
+      }
     } finally {
       setLoading(false);
     }
