@@ -42,6 +42,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
     'UI/UX Design',
     'Website Development',
     'Landing Pages',
+    'Social Media Creatives',
     'Design Systems',
     'Digital Experiences',
   ];

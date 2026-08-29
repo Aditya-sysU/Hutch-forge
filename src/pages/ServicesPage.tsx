@@ -2,14 +2,14 @@ import React from 'react';
 import { PageRoute } from '../types';
 import { SERVICES } from '../data/services';
 import { PROCESS_PHASES } from '../data/studioData';
-import { CheckCircle2, ArrowUpRight, Cpu, Layers, Terminal, Compass, Sparkles } from 'lucide-react';
+import { CheckCircle2, ArrowUpRight, Cpu, Layers, Terminal, Compass, Sparkles, Share2 } from 'lucide-react';
 
 interface ServicesPageProps {
   onNavigate: (route: PageRoute) => void;
 }
 
 export function ServicesPage({ onNavigate }: ServicesPageProps) {
-  const icons = [Layers, Compass, Terminal, Cpu, Sparkles];
+  const icons = [Layers, Compass, Terminal, Cpu, Sparkles, Share2];
 
   return (
     <div className="w-full pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-[#000000] min-h-screen text-[#F5F5F5]">

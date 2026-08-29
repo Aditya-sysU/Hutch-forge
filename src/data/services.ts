@@ -76,4 +76,19 @@ export const SERVICES: ServiceItem[] = [
     toolsAndTech: ['WebGL', 'Three.js', 'Canvas API', 'Motion/React', 'SVG Engineering'],
     bestFor: 'Creative launches, flagship brand reveals, interactive annual reports, and commemorative digital releases.',
   },
+  {
+    id: 'social-media-creatives',
+    title: 'Social Media Creatives',
+    subtitle: 'High-impact visual campaigns, branded asset suites, and motion-driven editorial social content.',
+    description: 'We craft bespoke social media creative systems, marketing campaign assets, and kinetic visual suites engineered to cut through noise. From high-converting paid ad assets and carousel systems to animated stories, every creative is aligned with brand craft and performance.',
+    deliverables: [
+      'Editorial carousel systems & social templates (Figma)',
+      'Short-form motion graphics & kinetic story animations',
+      'High-conversion paid advertising asset variations',
+      'Brand campaign launch toolkits & promotional visuals',
+      'Export-ready multi-format asset library (9:16, 1:1, 16:9)',
+    ],
+    toolsAndTech: ['Figma', 'Motion Design', 'Brand Art Direction', 'Social Systems', 'After Effects'],
+    bestFor: 'Brands, startups, and product teams seeking a cohesive, high-conviction visual presence across social and advertising channels.',
+  },
 ];

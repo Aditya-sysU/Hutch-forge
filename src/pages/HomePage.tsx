@@ -21,6 +21,7 @@ import {
   ShieldCheck,
   Globe,
   ChevronDown,
+  Share2,
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -46,6 +47,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
   };
 
   const phaseIcons = [Compass, Sparkles, Terminal];
+  const serviceIcons = [Layers, Compass, Terminal, Globe, Sparkles, Share2];
   const displayedProjects = showAllProjects ? PROJECTS : PROJECTS.slice(0, 2);
 
   return (
@@ -86,8 +88,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {SERVICES.slice(0, 4).map((service, index) => {
-              const Icon = phaseIcons[index % phaseIcons.length] || Layers;
+            {SERVICES.map((service, index) => {
+              const Icon = serviceIcons[index % serviceIcons.length] || Layers;
               return (
                 <div
                   key={service.id}
