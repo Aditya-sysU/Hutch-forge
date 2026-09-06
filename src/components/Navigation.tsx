@@ -44,7 +44,7 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
     <>
       {/* Top Floating Header with Dynamic Theme Transition */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 sm:px-10 md:px-14 py-4 sm:py-5 pointer-events-none transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-3.5 sm:px-6 md:px-8 lg:px-12 py-3 sm:py-3.5 md:py-4 pointer-events-none transition-all duration-500 ${
           isPastHero
             ? 'bg-white/90 backdrop-blur-xl border-b border-black/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.06)]'
             : 'bg-transparent'
@@ -52,10 +52,10 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
       >
         
         {/* Left: Studio Brand & Logo */}
-        <div className="pointer-events-auto min-w-[160px]">
+        <div className="pointer-events-auto flex-shrink-0">
           <BrandLogo
             onClick={() => handleNavClick('home')}
-            size="large"
+            size="nav"
             theme={isPastHero ? 'light' : 'dark'}
           />
         </div>
@@ -63,16 +63,16 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
         {/* Center: Aesthetic Minimalist Navigation Capsule */}
         <nav
           aria-label="Main Navigation"
-          className={`pointer-events-auto hidden md:flex items-center p-1.5 rounded-full transition-all duration-300 min-w-[340px] justify-center ${
+          className={`pointer-events-auto hidden md:flex items-center p-1 sm:p-1.5 rounded-full transition-all duration-300 justify-center max-w-sm ${
             isPastHero
               ? 'bg-[#F0F0F0] border border-black/10 shadow-[0_4px_16px_rgba(0,0,0,0.05)]'
               : 'bg-[#0a0a0a]/85 backdrop-blur-xl border border-white/[0.1] shadow-[0_12px_36px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.08)]'
           }`}
         >
-          <div className="flex items-center gap-1.5 w-full justify-around px-1">
+          <div className="flex items-center gap-1 sm:gap-1.5 w-full justify-around px-1">
             <button
               onClick={() => handleNavClick('about')}
-              className={`relative flex-1 text-center px-6 py-2 rounded-full text-xs tracking-tight transition-all duration-200 cursor-pointer ${
+              className={`relative flex-1 text-center px-4 lg:px-6 py-1.5 lg:py-2 rounded-full text-xs tracking-tight transition-all duration-200 cursor-pointer whitespace-nowrap ${
                 isPastHero
                   ? currentRoute === 'about'
                     ? 'text-white bg-[#111111] font-semibold shadow-sm'
@@ -87,7 +87,7 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
 
             <button
               onClick={() => handleNavClick('work')}
-              className={`relative flex-1 text-center px-6 py-2 rounded-full text-xs tracking-tight transition-all duration-200 cursor-pointer ${
+              className={`relative flex-1 text-center px-4 lg:px-6 py-1.5 lg:py-2 rounded-full text-xs tracking-tight transition-all duration-200 cursor-pointer whitespace-nowrap ${
                 isPastHero
                   ? currentRoute === 'work'
                     ? 'text-white bg-[#111111] font-semibold shadow-sm'
@@ -102,7 +102,7 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
 
             <button
               onClick={() => handleNavClick('services')}
-              className={`relative flex-1 text-center px-6 py-2 rounded-full text-xs tracking-tight transition-all duration-200 cursor-pointer ${
+              className={`relative flex-1 text-center px-4 lg:px-6 py-1.5 lg:py-2 rounded-full text-xs tracking-tight transition-all duration-200 cursor-pointer whitespace-nowrap ${
                 isPastHero
                   ? currentRoute === 'services'
                     ? 'text-white bg-[#111111] font-semibold shadow-sm'
@@ -118,23 +118,23 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
         </nav>
 
         {/* Right: CTA Pill Button "✦ Start a project" with Blue Hover */}
-        <div className="pointer-events-auto flex items-center gap-3">
+        <div className="pointer-events-auto flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0">
           <button
             onClick={() => handleNavClick('contact')}
-            className={`flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 cursor-pointer active:scale-95 group ${
+            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-full font-semibold text-[11px] sm:text-xs md:text-sm tracking-tight sm:tracking-normal transition-all duration-300 cursor-pointer active:scale-95 whitespace-nowrap flex-shrink-0 group ${
               isPastHero
                 ? 'bg-[#111111] hover:bg-[#1368e6] border border-black/10 text-white shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_24px_rgba(19,104,230,0.4)]'
                 : 'bg-[#000000] hover:bg-[#1368e6] border border-white/20 hover:border-[#1368e6] text-white shadow-[0_4px_20px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] hover:shadow-[0_6px_28px_rgba(19,104,230,0.6)]'
             }`}
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#1368e6] group-hover:text-white group-hover:rotate-12 transition-all duration-300" />
+            <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#1368e6] group-hover:text-white group-hover:rotate-12 transition-all duration-300 flex-shrink-0" />
             <span>Start a project</span>
           </button>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`md:hidden p-2.5 rounded-full border transition-colors cursor-pointer ${
+            className={`md:hidden p-2 sm:p-2.5 rounded-full border transition-colors cursor-pointer flex-shrink-0 ${
               isPastHero
                 ? 'bg-neutral-100 border-neutral-300 text-neutral-900 hover:bg-neutral-200'
                 : 'bg-black border-white/20 text-white hover:bg-white/10'
@@ -174,9 +174,13 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
             <div className="flex flex-col space-y-1 text-sm font-medium">
               <button
                 onClick={() => handleNavClick('home')}
-                className={`px-4 py-3 rounded-xl text-left ${
+                className={`px-4 py-3 rounded-xl text-left transition-colors ${
                   isPastHero
-                    ? 'text-neutral-800 hover:text-black hover:bg-black/5'
+                    ? currentRoute === 'home'
+                      ? 'text-black bg-black/5 font-semibold'
+                      : 'text-neutral-800 hover:text-black hover:bg-black/5'
+                    : currentRoute === 'home'
+                    ? 'text-white bg-white/10 font-semibold'
                     : 'text-white/80 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -184,9 +188,13 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
               </button>
               <button
                 onClick={() => handleNavClick('about')}
-                className={`px-4 py-3 rounded-xl text-left ${
+                className={`px-4 py-3 rounded-xl text-left transition-colors ${
                   isPastHero
-                    ? 'text-neutral-800 hover:text-black hover:bg-black/5'
+                    ? currentRoute === 'about'
+                      ? 'text-black bg-black/5 font-semibold'
+                      : 'text-neutral-800 hover:text-black hover:bg-black/5'
+                    : currentRoute === 'about'
+                    ? 'text-white bg-white/10 font-semibold'
                     : 'text-white/80 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -194,9 +202,13 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
               </button>
               <button
                 onClick={() => handleNavClick('work')}
-                className={`px-4 py-3 rounded-xl text-left ${
+                className={`px-4 py-3 rounded-xl text-left transition-colors ${
                   isPastHero
-                    ? 'text-neutral-800 hover:text-black hover:bg-black/5'
+                    ? currentRoute === 'work'
+                      ? 'text-black bg-black/5 font-semibold'
+                      : 'text-neutral-800 hover:text-black hover:bg-black/5'
+                    : currentRoute === 'work'
+                    ? 'text-white bg-white/10 font-semibold'
                     : 'text-white/80 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -204,9 +216,13 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
               </button>
               <button
                 onClick={() => handleNavClick('services')}
-                className={`px-4 py-3 rounded-xl text-left ${
+                className={`px-4 py-3 rounded-xl text-left transition-colors ${
                   isPastHero
-                    ? 'text-neutral-800 hover:text-black hover:bg-black/5'
+                    ? currentRoute === 'services'
+                      ? 'text-black bg-black/5 font-semibold'
+                      : 'text-neutral-800 hover:text-black hover:bg-black/5'
+                    : currentRoute === 'services'
+                    ? 'text-white bg-white/10 font-semibold'
                     : 'text-white/80 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -214,23 +230,33 @@ export function Navigation({ currentRoute, onNavigate }: NavigationProps) {
               </button>
               <button
                 onClick={() => handleNavClick('faq')}
-                className={`px-4 py-3 rounded-xl text-left ${
+                className={`px-4 py-3 rounded-xl text-left transition-colors ${
                   isPastHero
-                    ? 'text-neutral-800 hover:text-black hover:bg-black/5'
+                    ? currentRoute === 'faq'
+                      ? 'text-black bg-black/5 font-semibold'
+                      : 'text-neutral-800 hover:text-black hover:bg-black/5'
+                    : currentRoute === 'faq'
+                    ? 'text-white bg-white/10 font-semibold'
                     : 'text-white/80 hover:text-white hover:bg-white/5'
                 }`}
               >
                 FAQ
               </button>
+              <button
+                onClick={() => handleNavClick('contact')}
+                className={`px-4 py-3 rounded-xl text-left transition-colors ${
+                  isPastHero
+                    ? currentRoute === 'contact'
+                      ? 'text-black bg-black/5 font-semibold'
+                      : 'text-neutral-800 hover:text-black hover:bg-black/5'
+                    : currentRoute === 'contact'
+                    ? 'text-white bg-white/10 font-semibold'
+                    : 'text-white/80 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                Contact
+              </button>
             </div>
-
-            <button
-              onClick={() => handleNavClick('contact')}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#111111] hover:bg-[#1368e6] text-white font-semibold text-xs mt-2 transition-all duration-300 shadow-md group"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-[#1368e6] group-hover:text-white transition-colors" />
-              <span>Start a project</span>
-            </button>
           </motion.div>
         )}
       </AnimatePresence>
