@@ -328,7 +328,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               className="group inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#0d0d0d] hover:bg-[#1368e6] border border-white/20 hover:border-[#1368e6] text-white text-xs font-semibold tracking-wide transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.5)] hover:shadow-[0_6px_24px_rgba(19,104,230,0.5)] cursor-pointer active:scale-95"
             >
               <Sparkles className="w-3.5 h-3.5 text-[#1368e6] group-hover:text-white transition-colors" />
-              <span>{showAllProjects ? 'Show Less Projects' : 'Explore More Projects (3 More)'}</span>
+              <span>{showAllProjects ? 'Show Less Projects' : `Explore More Projects (${PROJECTS.length - 2} More)`}</span>
               <ChevronDown
                 className={`w-3.5 h-3.5 transition-transform duration-300 ${
                   showAllProjects ? 'rotate-180 text-white' : 'text-white/60 group-hover:text-white'
