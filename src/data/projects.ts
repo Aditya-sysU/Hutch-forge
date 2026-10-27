@@ -2,6 +2,23 @@ import { Project } from '../types';
 
 export const PROJECTS: Project[] = [
   {
+    id: 'morgansrealty',
+    title: "Morgan's International Realty",
+    client: "Morgan's International Realty",
+    year: '2025',
+    category: 'Luxury Real Estate & Property Investment Portal',
+    services: ['Property Listing Engine', 'Investment Analytics UI', 'Real Estate Portal', 'Responsive Web Architecture'],
+    description: "Premier luxury real estate brokerage & investment platform featuring high-end residential, commercial, beachfront, and off-plan properties across Dubai's prime locations.",
+    liveUrl: 'https://morgansrealty.com/',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+    imageAlt: "Morgan's International Realty luxury property platform at morgansrealty.com",
+    palette: ['#09090B', '#1368E6', '#D4AF37', '#FAFAFA'],
+    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Property MLS Search'],
+    overview: "Official luxury real estate and property investment portal for morgansrealty.com.",
+    deliverables: ['Luxury Property Showcase', 'Investment Search Engine', 'Brokerage Interface'],
+  },
+  {
     id: 'beamautomotive',
     title: 'Beam Automotive',
     client: 'Beam Automotive',
