@@ -416,6 +416,27 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                   )}
                 </div>
 
+                {/* Contact Number */}
+                <div className="space-y-1.5">
+                  <label htmlFor="phone" className="block text-sm text-white/70">
+                    Contact Number / Phone <span className="text-[#1368e6]">*</span>
+                  </label>
+                  <input
+                    id="phone"
+                    type="tel"
+                    required
+                    placeholder="+91 63073 35174"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className={`w-full px-4 py-3 bg-[#0d0d0d] border ${
+                      errors.phone ? 'border-rose-500' : 'border-white/10'
+                    } text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#1368e6] transition-colors rounded-xl`}
+                  />
+                  {errors.phone && (
+                    <p className="text-xs font-mono text-rose-400">{errors.phone}</p>
+                  )}
+                </div>
+
                 {/* Company / Brand */}
                 <div className="space-y-1.5">
                   <label htmlFor="company" className="block text-sm text-white/70">
@@ -438,7 +459,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 </div>
 
                 {/* Existing Website URL */}
-                <div className="space-y-1.5">
+                <div className="sm:col-span-2 space-y-1.5">
                   <label htmlFor="existingUrl" className="block text-sm text-white/70">
                     Current Website <span className="text-white/30">(Optional)</span>
                   </label>
@@ -547,20 +568,48 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
           </form>
         )}
 
-        {/* Direct Email fallback */}
-        <div className="p-5 rounded-xl bg-[#080808] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/60">
-          <div>
-            <span>Prefer direct email?</span>
-            <a
-              href="mailto:hello@hutchforge.in"
-              className="text-white hover:text-[#93c5fa] ml-2 underline font-mono text-sm"
-            >
-              hello@hutchforge.in
-            </a>
+        {/* Direct Contact Options: Phone & Email */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-5 rounded-xl bg-[#080808] border border-white/10 flex flex-col justify-between space-y-3 text-sm text-white/70">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono text-[#1368e6] font-semibold uppercase">DIRECT PHONE & WHATSAPP</span>
+              <span className="text-xs font-mono text-white/40">INSTANT CONNECT</span>
+            </div>
+            <div className="space-y-2">
+              <a
+                href="tel:+916307335174"
+                className="flex items-center justify-between hover:text-[#93c5fd] font-mono text-sm text-white transition-colors p-2 rounded-lg hover:bg-white/5"
+              >
+                <span>+91 63073 35174</span>
+                <span className="text-xs font-sans text-white/50 border border-white/10 px-2 py-0.5 rounded-full">Call / WhatsApp</span>
+              </a>
+              <a
+                href="tel:+917905645171"
+                className="flex items-center justify-between hover:text-[#93c5fd] font-mono text-sm text-white transition-colors p-2 rounded-lg hover:bg-white/5"
+              >
+                <span>+91 79056 45171</span>
+                <span className="text-xs font-sans text-white/50 border border-white/10 px-2 py-0.5 rounded-full">Call / WhatsApp</span>
+              </a>
+            </div>
           </div>
-          <span className="text-white/40 text-xs font-mono">
-            Direct Studio Inquiry
-          </span>
+
+          <div className="p-5 rounded-xl bg-[#080808] border border-white/10 flex flex-col justify-between space-y-3 text-sm text-white/70">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono text-[#1368e6] font-semibold uppercase">DIRECT EMAIL</span>
+              <span className="text-xs font-mono text-white/40">24H RESPONSE</span>
+            </div>
+            <div className="space-y-2">
+              <a
+                href="mailto:hello@hutchforge.in"
+                className="block hover:text-[#93c5fd] font-mono text-sm text-white transition-colors p-2 rounded-lg hover:bg-white/5"
+              >
+                hello@hutchforge.in
+              </a>
+              <p className="text-xs text-white/50 px-2">
+                Send us pitch decks, RFP documents, or direct project specs anytime.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
