@@ -577,6 +577,13 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
             </div>
             <div className="space-y-2">
               <a
+                href="tel:+918700061944"
+                className="flex items-center justify-between hover:text-[#93c5fd] font-mono text-sm text-white transition-colors p-2 rounded-lg hover:bg-white/5"
+              >
+                <span>+91 87000 61944</span>
+                <span className="text-xs font-sans text-white/50 border border-white/10 px-2 py-0.5 rounded-full">Call / WhatsApp</span>
+              </a>
+              <a
                 href="tel:+916307335174"
                 className="flex items-center justify-between hover:text-[#93c5fd] font-mono text-sm text-white transition-colors p-2 rounded-lg hover:bg-white/5"
               >

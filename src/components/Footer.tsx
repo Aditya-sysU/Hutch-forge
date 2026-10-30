@@ -134,6 +134,17 @@ export function Footer({ onNavigate, className = '' }: FooterProps) {
               </li>
               <li>
                 <a
+                  href="tel:+918700061944"
+                  className="inline-flex items-center gap-2.5 text-neutral-800 hover:text-[#1368e6] group transition-colors"
+                >
+                  <span className="w-8 h-8 rounded-full bg-black/5 border border-black/10 flex items-center justify-center text-[#1368e6] group-hover:bg-[#1368e6] group-hover:text-white transition-all shadow-sm shrink-0">
+                    <Phone className="w-3.5 h-3.5" />
+                  </span>
+                  <span className="font-mono font-semibold text-xs sm:text-[13px] tracking-wide">+91 87000 61944</span>
+                </a>
+              </li>
+              <li>
+                <a
                   href="tel:+916307335174"
                   className="inline-flex items-center gap-2.5 text-neutral-800 hover:text-[#1368e6] group transition-colors"
                 >
