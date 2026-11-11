@@ -2,6 +2,23 @@ import { Project } from '../types';
 
 export const PROJECTS: Project[] = [
   {
+    id: 'thelawtech',
+    title: 'The Law Tech',
+    client: 'The Law Tech',
+    year: '2025',
+    category: 'Legal Technology & Intelligence Portal',
+    services: ['Figma Web Design', 'Legal Tech UI/UX', 'Interactive Prototype', 'Dashboard Architecture'],
+    description: 'Cutting-edge legal technology and intelligence platform prototype designed in Figma, streamlining case research, document workflows, and legal team collaboration.',
+    liveUrl: 'https://www.figma.com/proto/R24CWArqKLmQcIg4o15QXL/The-Law-Tech?node-id=15-59&viewport=577%2C40%2C0.13&t=jt35FKLxSAQsF4kb-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1600&q=80',
+    imageAlt: 'The Law Tech official interactive prototype on Figma',
+    palette: ['#0B132B', '#1368E6', '#48CAE4', '#F8FAFC'],
+    techStack: ['Figma', 'UI/UX Design', 'Legal Analytics UI', 'React', 'TypeScript'],
+    overview: 'Official interactive prototype showcase for The Law Tech platform on Figma.',
+    deliverables: ['Legal Tech UI/UX Prototype', 'Dashboard Interface', 'Document Research Architecture'],
+  },
+  {
     id: 'baamweb',
     title: 'BAAM Web Platform',
     client: 'BAAM Creative',
